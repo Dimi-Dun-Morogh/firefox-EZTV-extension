@@ -1,7 +1,9 @@
 import { movieDbAxios } from '@/plugins/axios';
 import mutations from './mutations';
 
-const { MOVIES, PAGINATED_MOVIES, CURRENT_PAGE } = mutations;
+const {
+  MOVIES, PAGINATED_MOVIES, CURRENT_PAGE, LAST_SEARCH,
+} = mutations;
 
 const moviesStore = {
   namespaced: true,
@@ -10,6 +12,7 @@ const moviesStore = {
     moviesPerPage: 3,
     currentPage: 1,
     paginatedMovies: [],
+    lastSearch: '',
   },
   mutations: {
     [MOVIES](state, value) {
@@ -20,6 +23,9 @@ const moviesStore = {
     },
     [CURRENT_PAGE](state, value) {
       state.currentPage = value;
+    },
+    [LAST_SEARCH](state, value) {
+      state.lastSearch = value;
     },
   },
   getters: {
@@ -36,6 +42,7 @@ const moviesStore = {
         if (response.Error) {
           throw Error(response.Error);
         }
+        dispatch('setLastSearch', query);
         commit(MOVIES, response.Search);
         dispatch('paginateMovies');
         console.log(response);
@@ -54,7 +61,18 @@ const moviesStore = {
       commit(CURRENT_PAGE, value);
       dispatch('paginateMovies');
     },
+    setLastSearch({ commit }, value) {
+      commit(LAST_SEARCH, value);
+      localStorage.setItem('lastSearch', value);
+    },
+    initLastSearch({ dispatch }) {
+      const lastSearch = localStorage.getItem('lastSearch');
+      if (lastSearch != null) {
+        dispatch('searchMovies', lastSearch);
+      }
+    },
   },
 };
+// moviesStore.dispatch('initLastSearch');
 
 export default moviesStore;

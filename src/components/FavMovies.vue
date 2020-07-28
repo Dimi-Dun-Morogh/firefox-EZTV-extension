@@ -1,55 +1,49 @@
 <template>
- <div>
-   <div  class="movieItemsWrap">
+  <div>
+      <div  class="movieItemsWrap">
     <div v-for="(movie,index) in paginatedMovies"
     :key="index"
     >
       <MovieItem :movie="movie"
-      @addfav="addFav"/>
+      @addfav="RemoveFav"/>
 
   </div>
 
  </div>
-   <!-- <button @click="onClick">click</button> -->
-   <MoviesPagination
+    <MoviesPagination
     :current-page="currentPage"
       :per-page="moviesPerPage"
       :total="moviesLength"
       @onPageChanged="onPageChange"
    />
- </div>
+  </div>
 </template>
 
 <script>
+import MovieItem from '@/components/MovieItem.vue';
+import MoviesPagination from '@/components/MoviesPagination.vue';
 import { mapGetters, mapActions } from 'vuex';
-import MovieItem from './MovieItem.vue';
-import MoviesPagination from './MoviesPagination.vue';
 
 export default {
-  name: 'Movies',
+  name: 'FavMovies',
   components: {
     MovieItem,
     MoviesPagination,
   },
   computed: {
-    ...mapGetters('movies', ['movies', 'paginatedMovies', 'currentPage', 'moviesPerPage', 'moviesLength']),
+    ...mapGetters('favorites', ['paginatedMovies', 'currentPage', 'moviesPerPage', 'moviesLength']),
   },
   mounted() {
-    this.initLastSearch();
+    // this.initFavsFromLocalStorage();
   },
   methods: {
-    ...mapActions('movies', ['changePage', 'initLastSearch']),
-    ...mapActions('favorites', ['addMovieIdToFav']),
-    onClick() {
-      // this.initLastSearch();
-      this.$emit('emitting', 'hello');
-      console.log(this.movies);
-    },
+    ...mapActions('favorites', ['changePage', 'addMovieIdToFav', 'fetchFavs']),
     onPageChange(page) {
       this.changePage(page);
     },
-    addFav(val) {
+    RemoveFav(val) {
       this.addMovieIdToFav(val);
+      this.fetchFavs();
       console.log(val);
     },
   },

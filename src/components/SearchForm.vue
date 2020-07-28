@@ -5,12 +5,15 @@
     <b-input
       id="inline-form-input-movie"
       class="mb-2 mr-sm-2 mb-sm-0"
+      size="sm"
       placeholder="Search"
       v-model="searchValue"
+       @keydown.enter="onClick"
     ></b-input>
-    <b-button variant="primary"
+    <b-button variant="success"
      id="button"
      @click="onClick"
+     size="sm"
      ><b-icon icon="search"></b-icon></b-button>
   </b-form>
   </div>

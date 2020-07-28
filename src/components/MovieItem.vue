@@ -6,11 +6,14 @@
         <h3 class="movie-title">{{ movie.Title }}</h3>
         <span class="movie-year"> {{ movie.Year }} </span>
       </div>
-      <div class="movie-item-controls row no-gutters">
-        <div class="col pr-2">
-          <BButton size="md" block variant="outline-light"> Add to Fav</BButton>
+      <div class="movie-item-controls column no-gutters">
+        <div class="col ">
+          <BButton size="md"
+          block variant="outline-light"
+          @click="addFav"
+          > {{ AddOrDelete}}</BButton>
         </div>
-        <div class="col pl-2">
+        <div class="col ">
           <BButton
             size="md"
             block
@@ -25,8 +28,12 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'MovieItem',
+  data: () => ({
+  }),
   props: {
     movie: {
       type: Object,
@@ -34,10 +41,23 @@ export default {
     },
   },
   computed: {
+    ...mapGetters('favorites', ['favMovieIds']),
+    AddOrDelete() {
+      return this.favMovieIds.indexOf(this.movie.imdbID) === -1
+        ? 'Add to Fav' : 'Remove from Fav';
+    },
     posterBg() {
       return {
-        'background-image': `url(${this.movie.Poster})`,
+        'background-image': this.movie.Poster !== 'N/A' ? `url(${this.movie.Poster})` : 'url(https://www.wwe.com/f/styles/wwe_large/public/2016/02/Yokozuna_bio--12cbb0873e1b83a7fa05ec45614fc134.jpg)',
       };
+    },
+  },
+  methods: {
+    addFav() {
+      const id = this.movie.imdbID;
+      console.log(this.favMovieIds.indexOf(this.movie.imdbID));
+      this.$emit('addfav', id);
+      this.watchId = id + Math.random();
     },
   },
 };
@@ -52,7 +72,6 @@ export default {
   transition: all 0.2s ease;
   height: 200px;
   width: 155px;
-  margin-left: 5px;
 }
 .movie-item:hover {
   box-shadow: 0px 5px 30px rgba(0, 0, 0, 0.7);
