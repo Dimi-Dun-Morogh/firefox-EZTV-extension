@@ -6,15 +6,30 @@
       id="inline-form-input-movie"
       class="mb-2 mr-sm-2 mb-sm-0"
       placeholder="Search"
+      v-model="searchValue"
     ></b-input>
-    <b-button variant="primary" id="button"><b-icon icon="search"></b-icon></b-button>
+    <b-button variant="primary"
+     id="button"
+     @click="onClick"
+     ><b-icon icon="search"></b-icon></b-button>
   </b-form>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'SearchForm',
+  data: () => ({
+    searchValue: '',
+  }),
+  methods: {
+    ...mapActions('movies', ['searchMovies']),
+    onClick() {
+      this.searchMovies(this.searchValue);
+    },
+  },
 };
 </script>
 <style scoped>

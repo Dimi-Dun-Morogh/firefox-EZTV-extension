@@ -1,11 +1,16 @@
 <template>
   <div>
     Favorites
-    <button>hello</button>
+    <button @click="onClick">hello</button>
   </div>
 </template>
 <script>
 export default {
   name: 'Favorites',
+  methods: {
+    onClick() {
+      this.$router.push({ name: 'Main' });
+    },
+  },
 };
 </script>
