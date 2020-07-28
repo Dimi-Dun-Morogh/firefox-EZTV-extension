@@ -27,5 +27,7 @@ export default {
   margin-bottom: 20px;
 margin-top: 10px;
 margin-left: 5px;
+background-color: #1e1e1e;
+border-color: #10dd98;
 }
 </style>

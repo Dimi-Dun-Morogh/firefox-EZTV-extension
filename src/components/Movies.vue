@@ -43,14 +43,12 @@ export default {
     onClick() {
       // this.initLastSearch();
       this.$emit('emitting', 'hello');
-      console.log(this.movies);
     },
     onPageChange(page) {
       this.changePage(page);
     },
     addFav(val) {
       this.addMovieIdToFav(val);
-      console.log(val);
     },
   },
 };

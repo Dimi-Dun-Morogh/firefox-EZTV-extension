@@ -18,6 +18,7 @@
             size="md"
             block
             variant="outline-light"
+            @click="searchTorr"
           >
             Search on EZTV</BButton
           >
@@ -28,7 +29,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   name: 'MovieItem',
@@ -53,11 +54,15 @@ export default {
     },
   },
   methods: {
+    ...mapActions('eztv', ['fetchShows']),
     addFav() {
       const id = this.movie.imdbID;
       console.log(this.favMovieIds.indexOf(this.movie.imdbID));
       this.$emit('addfav', id);
-      this.watchId = id + Math.random();
+    },
+    searchTorr() {
+      this.fetchShows(this.movie.imdbID);
+      this.$router.push({ name: 'Search' });
     },
   },
 };

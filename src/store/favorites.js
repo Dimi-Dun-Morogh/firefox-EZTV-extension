@@ -78,14 +78,13 @@ const FavoritesStore = {
     },
 
     updateLocalStorage(context, val) {
-      console.log('fav movie ids in LS', val);
       localStorage.setItem('fav-history', JSON.stringify(val));
     },
-    initLocalStorage({ commit }) {
+    initLocalStorage({ commit, dispatch }) {
       const history = JSON.parse(localStorage.getItem('fav-history'));
       if (history != null && history.length !== 0) {
-        console.log('history', history);
         history.forEach((id) => commit(FAV_MOVIE_IDS, id));
+        dispatch('fetchFavs');
       }
     },
   },

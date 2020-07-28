@@ -45,7 +45,6 @@ const moviesStore = {
         dispatch('setLastSearch', query);
         commit(MOVIES, response.Search);
         dispatch('paginateMovies');
-        console.log(response);
       } catch (error) {
         console.log(error);
       }

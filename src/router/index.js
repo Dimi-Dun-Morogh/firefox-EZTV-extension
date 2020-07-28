@@ -15,6 +15,11 @@ const routes = [
     name: 'Favs',
     component: () => import('../views/Favorites.vue'),
   },
+  {
+    path: '/search',
+    name: 'Search',
+    component: () => import('../views/SearchTorrent.vue'),
+  },
 ];
 
 const router = new VueRouter({

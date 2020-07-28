@@ -27,7 +27,6 @@ export default {
   methods: {
     ...mapActions('favorites', ['fetchFavs']),
     onClick() {
-      console.log(this.$router);
       this.fetchFavs();
       this.$router.push({ name: 'Favs' });
     },
@@ -47,5 +46,7 @@ padding-right:5px ;
 }
 .fav-btn {
   margin-left: auto;
+  background-color: #1e1e1e;
+border-color: #10dd98;
 }
 </style>
