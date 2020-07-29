@@ -6,14 +6,30 @@
   >{{show.title}} <span class="seeds">seeds:{{show.seeds}}</span> </span>
 <div v-show="isVisible">
   <a :href="show.magnet_url"> <img src="../assets/magnet.png" alt=""> </a>
-  <a :href="show.torrent_url"> <img src="../assets/dl.png"></a>
+  <a :href="show.torrent_url"
+   @click="onTorrClick"
+   :id="show.hash"
+   > <img src="../assets/dl.png"></a>
+  <span class="size">{{formatBytes(show.size_bytes)}}</span>
+  <span class="date-realeased">released: {{dateReleased()}}</span>
 </div>
 </div>
+  <b-tooltip
+  ref="tooltip"
+  :target="show.hash"
+  :custom-class="`tooltip-bg`"
+  :disabled="true"
+  >
+  <!--  -->
+      downloaded
+    </b-tooltip>
   </div>
+
 </template>
 
 <script>
-
+/* eslint-disable radix */
+/* eslint-disable no-restricted-globals */
 export default {
   name: 'FoundShows',
   data: () => ({
@@ -26,6 +42,37 @@ export default {
     Visibility() {
       const display = !this.isVisible;
       this.isVisible = display;
+    },
+    formatBytes(bytes, decimals) {
+      if (bytes === 0) return '0 GB';
+      if (isNaN(parseInt(bytes))) return bytes;
+      // eslint-disable-next-line no-param-reassign
+      if (typeof bytes === 'string') bytes = parseInt(bytes);
+      if (bytes === 0) return '0';
+      const k = 1000;
+      const dm = decimals + 1 || 3;
+      const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return `${parseFloat((bytes / k ** i).toFixed(dm))} ${sizes[i]}`;
+    },
+    dateReleased() {
+      let date = (new Date(this.show.date_released_unix * 1000)).toString();
+      date = date.slice(4, 15);
+      return date;
+    },
+    onTorrClick(e) {
+      e.preventDefault();
+      this.$refs.tooltip.$emit('open');
+      const downloading = browser.downloads.download(
+        {
+          url: this.show.torrent_url,
+        },
+      );
+      downloading.then(() => {
+        setTimeout(() => {
+          this.$refs.tooltip.$emit('close');
+        }, 3000);
+      });
     },
   },
 };
@@ -47,8 +94,23 @@ padding: 5px 5px;
   font-size: 14px;
 }
 .seeds {
-  color:green;
+  color:#05f914;;
   align-self: center;
 margin-left: auto;
+}
+.size {
+  color: #ffff;
+  margin-left: 5px;
+font-size: 14px;
+}
+.date-realeased {
+  color: #05f914;
+font-size: 12px;
+margin-left: 10px;
+}
+.tooltip-bg >>>.tooltip-inner {
+  border:1px solid red;
+  background-color: red;
+  font-weight: bold;
 }
 </style>

@@ -42,7 +42,7 @@ margin-bottom: 10px;
 padding-right:5px ;
 }
 .srch-frm {
-  margin-left: 83px;
+  margin-left: 91px;
 }
 .fav-btn {
   margin-left: auto;

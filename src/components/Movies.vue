@@ -1,22 +1,22 @@
 <template>
  <div>
+<Notification/>
    <div  class="movieItemsWrap">
     <div v-for="(movie,index) in paginatedMovies"
-    :key="index"
-    >
+    :key="index"  >
       <MovieItem :movie="movie"
       @addfav="addFav"/>
-
   </div>
-
  </div>
    <!-- <button @click="onClick">click</button> -->
-   <MoviesPagination
+<div  v-show="moviesLength">
+     <MoviesPagination
     :current-page="currentPage"
       :per-page="moviesPerPage"
       :total="moviesLength"
       @onPageChanged="onPageChange"
    />
+</div>
  </div>
 </template>
 
@@ -24,12 +24,14 @@
 import { mapGetters, mapActions } from 'vuex';
 import MovieItem from './MovieItem.vue';
 import MoviesPagination from './MoviesPagination.vue';
+import Notification from './Notification.vue';
 
 export default {
   name: 'Movies',
   components: {
     MovieItem,
     MoviesPagination,
+    Notification,
   },
   computed: {
     ...mapGetters('movies', ['movies', 'paginatedMovies', 'currentPage', 'moviesPerPage', 'moviesLength']),
@@ -43,6 +45,7 @@ export default {
     onClick() {
       // this.initLastSearch();
       this.$emit('emitting', 'hello');
+      console.log(this.moviesLength);
     },
     onPageChange(page) {
       this.changePage(page);
@@ -61,4 +64,8 @@ export default {
 padding-left: 5px;
 padding-right: 5px;
 }
+.wrap-toast {
+  width: 300px;
+}
+
 </style>

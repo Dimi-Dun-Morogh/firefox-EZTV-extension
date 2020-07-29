@@ -29,7 +29,8 @@ export default {
   }),
   methods: {
     ...mapActions('movies', ['searchMovies']),
-    onClick() {
+    onClick(event) {
+      event.preventDefault();
       this.searchMovies(this.searchValue);
     },
   },

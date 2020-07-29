@@ -47,6 +47,15 @@ const moviesStore = {
         dispatch('paginateMovies');
       } catch (error) {
         console.log(error);
+        dispatch(
+          'shownotify',
+          {
+            msg: error.message,
+            title: 'error',
+            variant: 'danger',
+          },
+          { root: true },
+        );
       }
     },
     paginateMovies({ commit, getters }) {
