@@ -1,3 +1,6 @@
+##### Links:
+Chrome: https://chrome.google.com/webstore/detail/eztv-ext/opkjfbndmlgelahollaapbhhlfpfcomo?hl=ru&authuser=0
+FireFox: https://addons.mozilla.org/ru/firefox/addon/eztv-fast-and-easy/
 ##### Scheme:
 ![Alt text](images/scheme.png?raw=true "scheme")
 ```sh
