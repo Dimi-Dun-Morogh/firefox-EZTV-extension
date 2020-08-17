@@ -1,6 +1,7 @@
 <template>
   <div>
-      <b-form inline class="form">
+      <b-form inline class="form"
+      >
     <!-- <label class="sr-only" for="inline-form-input-name">Name</label> -->
     <b-input
       id="inline-form-input-movie"

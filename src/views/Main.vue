@@ -4,6 +4,7 @@
 <searchForm class="srch-frm"/>
      <b-button variant="success" class="fav-btn"
      @click="onClick"
+     size="sm"
      ><b-icon icon="arrow-right-short
 "></b-icon>Favorites</b-button>
     </div>

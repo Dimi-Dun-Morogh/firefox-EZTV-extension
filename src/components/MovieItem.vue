@@ -8,14 +8,14 @@
       </div>
       <div class="movie-item-controls column no-gutters">
         <div class="col ">
-          <BButton size="md"
+          <BButton size="sm"
           block variant="outline-light"
           @click="addFav"
           > {{ AddOrDelete}}</BButton>
         </div>
         <div class="col ">
           <BButton
-            size="md"
+            size="sm"
             block
             variant="outline-light"
             @click="searchTorr"

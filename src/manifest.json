@@ -1,11 +1,12 @@
 {
   "manifest_version": 2,
-  "name": "EZTV ext",
-  "description": "EZTV browser extension",
+  "name": "__MSG_extName__",
+  "description": "__MSG_appDesc__",
   "default_locale": "en",
   "permissions": [
     "downloads"
   ],
+  "version": "0.1.4",
   "icons": {
     "19": "icons/icon-19.png",
     "48": "icons/icon-48.png",

@@ -2,6 +2,7 @@
   <div>
     <b-button variant="success" class="fav-btn"
      @click="onClick"
+     size="sm"
      ><b-icon icon="arrow-left-short
 "></b-icon>Back</b-button>
     <FavMovies/>

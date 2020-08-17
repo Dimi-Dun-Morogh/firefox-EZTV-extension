@@ -1,17 +1,16 @@
 <template>
   <div>
     <div class="nav-buttons">
-          <b-button variant="success" class="fav-btn"
-     @click="onClickBack"
-     ><b-icon icon="arrow-left-short
-"></b-icon>Back</b-button>
-<span>found: {{totalResults}}</span>
-          <b-button variant="success" class="fav-btn"
-     @click="onClickFav"
-     ><b-icon icon="arrow-right-short
-"></b-icon>Favorites</b-button>
+      <b-button variant="success" class="fav-btn" size="sm" @click="onClickBack">
+        <b-icon icon="arrow-left-short"></b-icon>Back
+      </b-button>
+      <span>found: {{totalResults}}</span>
+      <b-button variant="success" class="fav-btn" size="sm" @click="onClickFav">
+        <b-icon icon="arrow-right-short
+"></b-icon>Favorites
+      </b-button>
     </div>
-    <Shows/>
+    <Shows />
   </div>
 </template>
 
@@ -45,10 +44,13 @@ export default {
   margin-bottom: 5px;
 }
 .fav-btn {
-   background-color: #1e1e1e;
-border-color: #10dd98;
+  background-color: #1e1e1e;
+  border-color: #10dd98;
+  margin-top: 10px;
+margin-left: 5px;
+margin-right: 5px;
 }
 span {
-  color:#ffff;
+  color: #ffff;
 }
 </style>

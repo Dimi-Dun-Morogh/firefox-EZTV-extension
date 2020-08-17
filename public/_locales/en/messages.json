@@ -1,6 +1,9 @@
 {
   "extName": {
-    "message": "firefox-eztv-ext",
-    "description": ""
+    "message": "eztv fast & easy",
+    "description": "search and download your series"
+  },
+  "appDesc": {
+    "message": "search and download your series and shows"
   }
 }
