@@ -17,3 +17,10 @@ npm run build - build
 ![Alt text](images/Screen-eztv.jpg?raw=true "scheme")
 ##### on error:
 ![Alt text](images/Screen-search-wrongjpg.jpg?raw=true "scheme")
+
+##### todo:
+##### 27.09.2020
+- [ ] filter fetched data so only  SERIES and maybe TVSHOWS are displayed (NO MOVIES)
+- [ ] add input to change pages manually
+- [ ] add some credits | link for eztv api
+
