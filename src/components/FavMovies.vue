@@ -1,8 +1,8 @@
 <template>
   <div>
       <div  class="movieItemsWrap">
-    <div v-for="(movie,index) in paginatedMovies"
-    :key="index"
+    <div v-for="(movie) in paginatedMovies"
+    :key="movie.imdbID"
     >
       <MovieItem :movie="movie"
       @addfav="RemoveFav"/>
@@ -34,7 +34,6 @@ export default {
     ...mapGetters('favorites', ['paginatedMovies', 'currentPage', 'moviesPerPage', 'moviesLength']),
   },
   mounted() {
-    // this.initFavsFromLocalStorage();
   },
   methods: {
     ...mapActions('favorites', ['changePage', 'addMovieIdToFav', 'fetchFavs']),

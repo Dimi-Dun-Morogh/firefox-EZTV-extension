@@ -3,7 +3,7 @@ import mutations from './mutations';
 
 const {
   FAV_MOVIE_IDS, FAV_MOVIES, FAV_MOVIE_IDS_DELETE, PAGINATED_MOVIES, CURRENT_PAGE,
-  FAV_MOVIES_DELETE_BY_ID,
+  FAV_MOVIES_DELETE_BY_ID, FAV_MOVIE_IDS_ARR,
 } = mutations;
 const FavoritesStore = {
   namespaced: true,
@@ -33,6 +33,9 @@ const FavoritesStore = {
     [FAV_MOVIES_DELETE_BY_ID](state, value) {
       state.favMovies.splice(value, 1);
     },
+    [FAV_MOVIE_IDS_ARR](state, value) {
+      state.favMovieIds = value;
+    },
 
   },
   getters: {
@@ -44,6 +47,19 @@ const FavoritesStore = {
     moviesLength: ({ favMovies }) => favMovies.length,
   },
   actions: {
+    filterFavsLastSearch({ getters, dispatch }, id) {
+      // last searched for torrents will be added to index 0
+      console.log(`filterfavsLastSearch, id${id}`);
+      const { favMovieIds } = getters;
+      if (favMovieIds.indexOf(id) === -1) return; // break if id is not in favs;
+      const filtered = favMovieIds.filter((item) => item !== id);
+      filtered.unshift(id);
+      /* commit(FAV_MOVIE_IDS_ARR, filtered); maybe it's not really needed
+      ( this line  will re-render favs)
+      and last searched will be on page 1 imidiatly after search; rather then on next app launch */
+      dispatch('updateLocalStorage', filtered);
+      dispatch('fetchFavs');
+    },
     addMovieIdToFav({ commit, getters, dispatch }, id) {
       const { favMovieIds } = getters;
       const index = favMovieIds.indexOf(id);

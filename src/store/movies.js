@@ -38,12 +38,13 @@ const moviesStore = {
   actions: {
     async  searchMovies({ commit, dispatch }, query) {
       try {
-        const response = await movieDbAxios.get(`/?s=${query}`);
+        const response = await movieDbAxios.get(`/?s=${query}&type=series`);
         if (response.Error) {
           throw Error(response.Error);
         }
         dispatch('setLastSearch', query);
         commit(MOVIES, response.Search);
+        commit(CURRENT_PAGE, 1); // set current page to 1 on each search
         dispatch('paginateMovies');
       } catch (error) {
         console.log(error);

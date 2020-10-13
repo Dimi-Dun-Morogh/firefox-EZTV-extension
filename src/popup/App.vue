@@ -1,6 +1,7 @@
 <template>
   <div>
      <router-view/>
+     <span class="apiCreds"><a href="https://eztv.io/api/">eztv-api</a></span>
   </div>
 </template>
 
@@ -26,5 +27,16 @@ body {
   /* min-height: 200px; */
   background-image: linear-gradient(45deg, rgb(0, 3, 38) 0%, rgb(82, 15, 117) 100%);
   background-color: indigo!important;
+}
+.apiCreds {
+  position: absolute;
+  bottom: 0;
+  left:5px;
+  color: #fff;
+}
+.apiCreds a {
+  color: #fff;
+  font-size: 13px;
+  text-decoration: none;
 }
 </style>

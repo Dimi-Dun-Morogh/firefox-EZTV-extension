@@ -55,12 +55,15 @@ export default {
   },
   methods: {
     ...mapActions('eztv', ['fetchShows']),
+    ...mapActions('favorites', ['filterFavsLastSearch']),
     addFav() {
       const id = this.movie.imdbID;
       console.log(this.favMovieIds.indexOf(this.movie.imdbID));
       this.$emit('addfav', id);
     },
     searchTorr() {
+      const id = this.movie.imdbID;
+      this.filterFavsLastSearch(id);
       this.fetchShows(this.movie.imdbID);
       this.$router.push({ name: 'Search' });
     },
