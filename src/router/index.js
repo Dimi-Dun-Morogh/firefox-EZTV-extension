@@ -20,6 +20,11 @@ const routes = [
     name: 'Search',
     component: () => import('../views/SearchTorrent.vue'),
   },
+  {
+    path: '/history',
+    name: 'History',
+    component: () => import('../views/history.vue'),
+  },
 ];
 
 const router = new VueRouter({

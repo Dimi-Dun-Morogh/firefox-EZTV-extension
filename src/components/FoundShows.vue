@@ -5,7 +5,7 @@
   class="title"
   >{{show.title}} <span class="seeds">seeds:{{show.seeds}}</span> </span>
 <div v-show="isVisible">
-  <a :href="show.magnet_url"> <img src="../assets/magnet.png" alt=""> </a>
+  <a :href="show.magnet_url"> <img src="../assets/magnet.png" alt="magnet"> </a>
   <a :href="show.torrent_url"
    @click="onTorrClick"
    :id="show.hash"

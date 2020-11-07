@@ -11,4 +11,7 @@ module.exports = {
       componentOptions: {},
     },
   },
+  configureWebpack: {
+    devtool: 'cheap-module-source-map',
+  },
 };

@@ -8,7 +8,7 @@
       next-text="Next"
       last-number
     />
-    <div class="manual-page">
+    <div class="manual-page" v-show="manual">
       <b-form-input
         class="manual-input"
         size="sm"
@@ -41,6 +41,10 @@ export default {
       Type: Number,
       default: 1,
     },
+    manual: {
+      Type: Boolean,
+      default: true,
+    },
   },
   computed: {
     currentPageModel: {
@@ -61,7 +65,6 @@ export default {
 </script>
 <style scoped>
 .movies-pagination {
-  margin-top: 30px;
   flex-direction: column;
   align-items: center;
 }
