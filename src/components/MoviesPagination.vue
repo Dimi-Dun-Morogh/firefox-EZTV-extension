@@ -1,5 +1,5 @@
 <template>
-  <div class="movies-pagination d-flex justify-content-center">
+  <div class="movies-pagination  justify-content-center">
     <BPagination
       v-model="currentPageModel"
       :per-page="perPage"
@@ -67,6 +67,7 @@ export default {
 .movies-pagination {
   flex-direction: column;
   align-items: center;
+  display: flex;
 }
 .movies-pagination >>> .pagination {
   margin-bottom: 7px;

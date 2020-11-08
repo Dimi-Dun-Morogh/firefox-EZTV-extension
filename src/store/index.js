@@ -4,6 +4,7 @@ import movies from './movies';
 import favorites from './favorites';
 import eztv from './eztv';
 import notifications from './notification';
+import downloadsHistory from './history_dwnlds';
 
 Vue.use(Vuex);
 
@@ -19,5 +20,6 @@ export default new Vuex.Store({
     favorites,
     eztv,
     notifications,
+    downloadsHistory,
   },
 });

@@ -58,7 +58,7 @@ export default {
 body {
   width: 500px;
   /* height: 370px; */
-  min-height: 200px;
+  /* min-height: 200px; */
   background-image: linear-gradient(
     45deg,
     rgb(0, 3, 38) 0%,

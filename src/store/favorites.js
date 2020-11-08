@@ -63,7 +63,6 @@ const FavoritesStore = {
     addMovieIdToFav({ commit, getters, dispatch }, id) {
       const { favMovieIds } = getters;
       const index = favMovieIds.indexOf(id);
-      console.log('fav movie ids', favMovieIds);
       if (index === -1) {
         commit(FAV_MOVIE_IDS, id);
         dispatch('updateLocalStorage', favMovieIds);
