@@ -19,6 +19,7 @@ export default {
   components: { },
   mounted() {
     this.initLocalStorage();
+    this.initLocalStorageDwnlds();
   },
   computed: {
     historyBtn() {
@@ -36,6 +37,7 @@ export default {
   },
   methods: {
     ...mapActions('favorites', ['initLocalStorage']),
+    ...mapActions('downloadsHistory', ['initLocalStorageDwnlds']),
     onClick() {
       const { name: location } = this.$router.history.current;
       console.log(location, 'onclick');

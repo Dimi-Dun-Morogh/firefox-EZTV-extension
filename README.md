@@ -31,4 +31,5 @@ npm run build - build
 - [x] add some credits | link for eztv api (13.10.2020) ✅
 - [x] favorites list should update every  time torrent search is performed,  so the searched item has index 0; (13.10.2020) ✅(array of id's will update every time fav's item search performed, re-render will hapen every app restart, imidiate rerender is commented in store/favorites.js as it's not good user experience probably) <br>:cow2::cow2::cow2:+ **release v.0.1.5**:cow2::cow2::cow2:
 - [x] add info about latest downloaded file or magnet somewhere - created a page for  downloads history, it has table, filter input and pagination, fields include file link, date downloaded and file name. (08.11.2020) ✅<br>:cow2::cow2::cow2:+ **release v.0.1.6**:cow2::cow2::cow2:
-
+- [x] fixed local storage & downloads  history issue + added google analytics (14.11.2020)✅
+<br>:cow2::cow2::cow2:+ **release v.0.1.7**:cow2::cow2::cow2:

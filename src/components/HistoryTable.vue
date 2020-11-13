@@ -81,7 +81,6 @@ export default {
     };
   },
   mounted() {
-    this.initLocalStorageDwnlds();
   },
   watch: {
     history() {
@@ -95,7 +94,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions('downloadsHistory', ['removeFromHistory', 'initLocalStorageDwnlds']),
+    ...mapActions('downloadsHistory', ['removeFromHistory']),
     onPageChange(page) {
       this.pagination.currentPage = page;
     },
