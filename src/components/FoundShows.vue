@@ -92,6 +92,7 @@ export default {
             : this.show.magnet_url,
         },
         id: Number(new Date()),
+        imdbId: `tt${this.show.imdb_id}`,
       };
       this.addToHistory(item);
     },

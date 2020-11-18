@@ -1,5 +1,6 @@
 <template>
   <div>
+    <Notification />
     <router-view />
     <div class="wrap-bottom">
       <span class="apiCreds"><a href="https://eztv.io/api/">eztv-api</a></span>
@@ -13,10 +14,11 @@
 
 <script>
 import { mapActions } from 'vuex';
+import Notification from '../components/Notification.vue';
 
 export default {
   name: 'App',
-  components: { },
+  components: { Notification },
   mounted() {
     this.initLocalStorage();
     this.initLocalStorageDwnlds();
@@ -57,6 +59,9 @@ export default {
 </script>
 
 <style>
+html {
+  font-size: 13.5px;
+}
 body {
   width: 500px;
   /* height: 370px; */
@@ -73,6 +78,8 @@ body {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  position: absolute;
+  bottom: 0;
 }
 .apiCreds a {
   color: #fff;

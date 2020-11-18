@@ -1,6 +1,5 @@
 <template>
  <div>
-<Notification/>
    <div  class="movieItemsWrap">
     <div v-for="(movie,index) in paginatedMovies"
     :key="index"  >
@@ -24,14 +23,12 @@
 import { mapGetters, mapActions } from 'vuex';
 import MovieItem from './MovieItem.vue';
 import MoviesPagination from './MoviesPagination.vue';
-import Notification from './Notification.vue';
 
 export default {
   name: 'Movies',
   components: {
     MovieItem,
     MoviesPagination,
-    Notification,
   },
   computed: {
     ...mapGetters('movies', ['movies', 'paginatedMovies', 'currentPage', 'moviesPerPage', 'moviesLength']),

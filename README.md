@@ -33,3 +33,4 @@ npm run build - build
 - [x] add info about latest downloaded file or magnet somewhere - created a page for  downloads history, it has table, filter input and pagination, fields include file link, date downloaded and file name. (08.11.2020) ✅<br>:cow2::cow2::cow2:+ **release v.0.1.6**:cow2::cow2::cow2:
 - [x] fixed local storage & downloads  history issue + added google analytics (14.11.2020)✅
 <br>:cow2::cow2::cow2:+ **release v.0.1.7**:cow2::cow2::cow2:
+- [x] should be able to perform torrents search from history downlds table (18.11.2020)✅

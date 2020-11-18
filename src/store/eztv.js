@@ -53,6 +53,9 @@ const eztvStore = {
       commit(CURRENT_PAGE, page);
       dispatch('fetchShows', currentQuery);
     },
+    resetPage({ commit }) {
+      commit(CURRENT_PAGE, 1);
+    },
   },
 };
 

@@ -25,6 +25,9 @@
         head-variant="dark"
         class="table-history"
       >
+        <template #cell(name)="history">
+        <a href="#" @click="searchShow(history.item.imdbId)">{{history.item.name}}</a>
+      </template>
         <template #cell(file)="history">
           <a :href="history.value.link">
             <img
@@ -77,10 +80,11 @@ export default {
         currentPage: 1,
         totalRows: 1,
       },
-      fields: ['name', 'file', 'date', 'del'],
+      fields: [{ key: 'name', label: 'click title to search or click  file icon for download' }, 'file', 'date', 'del'],
     };
   },
   mounted() {
+    this.initLocalStorageDwnlds();
   },
   watch: {
     history() {
@@ -94,18 +98,33 @@ export default {
     },
   },
   methods: {
-    ...mapActions('downloadsHistory', ['removeFromHistory']),
+    ...mapActions('downloadsHistory', ['removeFromHistory', 'initLocalStorageDwnlds']),
+    ...mapActions(['shownotify']),
+    ...mapActions('eztv', ['fetchShows', 'resetPage']),
     onPageChange(page) {
       this.pagination.currentPage = page;
     },
     onItemDelete(id) {
-      console.log(id);
       this.removeFromHistory(id);
     },
     onFiltered(filteredItems) {
       // Trigger pagination to update the number of buttons/pages due to filtering
       this.pagination.totalRows = filteredItems.length;
       this.pagination.currentPage = 1;
+    },
+    searchShow(id) {
+      console.log(id);
+      if (!id) {
+        this.shownotify({
+          msg: 'search will work only for items added after last extension update which happened  18.11.2020',
+          title: 'error',
+          variant: 'danger',
+        });
+      } else {
+        this.resetPage();
+        this.fetchShows(id);
+        this.$router.push({ name: 'Search' });
+      }
     },
   },
 };
@@ -120,6 +139,7 @@ span {
 .table-wrap {
   padding: 0 20px;
   min-height: 100px;
+  margin-bottom: 30px;
 }
 .table-wrap input {
   width: 50%;
