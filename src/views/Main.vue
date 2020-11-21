@@ -1,12 +1,7 @@
 <template>
   <div>
     <div class="wrap-form">
-<searchForm class="srch-frm"/>
-     <b-button variant="success" class="fav-btn"
-     @click="onClick"
-     size="sm"
-     ><b-icon icon="arrow-right-short
-"></b-icon>Favorites</b-button>
+<Input @inputEvent="clickInput" class="srch-frm"/>
     </div>
 
     <Movies
@@ -15,21 +10,21 @@
 </template>
 
 <script>
-import SearchForm from '@/components/SearchForm.vue';
+import Input from '@/components/Input.vue';
 import Movies from '@/components/Movies.vue';
 import { mapActions } from 'vuex';
 
 export default {
   name: 'Main',
   components: {
-    SearchForm,
+    Input,
     Movies,
   },
   methods: {
     ...mapActions('favorites', ['fetchFavs']),
-    onClick() {
-      this.fetchFavs();
-      this.$router.push({ name: 'Favs' });
+    ...mapActions('movies', ['searchMovies']),
+    clickInput(searchVal) {
+      this.searchMovies(searchVal);
     },
   },
 };
@@ -43,7 +38,7 @@ margin-bottom: 10px;
 padding-right:5px ;
 }
 .srch-frm {
-  margin-left: 91px;
+  margin-left: 140px;
 }
 .fav-btn {
   margin-left: auto;

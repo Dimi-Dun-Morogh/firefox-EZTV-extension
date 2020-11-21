@@ -139,7 +139,7 @@ span {
 .table-wrap {
   padding: 0 20px;
   min-height: 100px;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 .table-wrap input {
   width: 50%;

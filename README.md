@@ -34,3 +34,5 @@ npm run build - build
 - [x] fixed local storage & downloads  history issue + added google analytics (14.11.2020)✅
 <br>:cow2::cow2::cow2:+ **release v.0.1.7**:cow2::cow2::cow2:
 - [x] should be able to perform torrents search from history downlds table (18.11.2020)✅
+- [ ] implement filter by name for favorites and eztv items;
+- [x] think of way to group nav buttons ( maybe something from bootstrap)

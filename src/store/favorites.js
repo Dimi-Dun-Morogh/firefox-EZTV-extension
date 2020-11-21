@@ -4,6 +4,7 @@ import mutations from './mutations';
 const {
   FAV_MOVIE_IDS, FAV_MOVIES, FAV_MOVIE_IDS_DELETE, PAGINATED_MOVIES, CURRENT_PAGE,
   FAV_MOVIES_DELETE_BY_ID, FAV_MOVIE_IDS_ARR,
+  FAV_MOVIES_FILTERED_LENGTH,
 } = mutations;
 const FavoritesStore = {
   namespaced: true,
@@ -13,6 +14,7 @@ const FavoritesStore = {
     moviesPerPage: 3,
     currentPage: 1,
     paginatedMovies: [],
+    moviesLength: 0,
   },
   mutations: {
     [FAV_MOVIE_IDS](state, value) {
@@ -36,7 +38,9 @@ const FavoritesStore = {
     [FAV_MOVIE_IDS_ARR](state, value) {
       state.favMovieIds = value;
     },
-
+    [FAV_MOVIES_FILTERED_LENGTH](state, value) {
+      state.moviesLength = value;
+    },
   },
   getters: {
     favMovies: ({ favMovies }) => favMovies,
@@ -44,7 +48,7 @@ const FavoritesStore = {
     moviesPerPage: ({ moviesPerPage }) => moviesPerPage,
     currentPage: ({ currentPage }) => currentPage,
     paginatedMovies: ({ paginatedMovies }) => paginatedMovies,
-    moviesLength: ({ favMovies }) => favMovies.length,
+    moviesLength: ({ moviesLength }) => moviesLength,
   },
   actions: {
     filterFavsLastSearch({ getters, dispatch }, id) {
@@ -78,13 +82,19 @@ const FavoritesStore = {
       const requests = favMovieIds.map((id) => movieDbAxios.get(`/?i=${id}`));
       const response = await Promise.all(requests);
       commit(FAV_MOVIES, response);
+      console.log(response);
       dispatch('paginateMovies');
     },
-    paginateMovies({ commit, getters }) {
+    paginateMovies({ commit, getters }, query = '') {
       const { favMovies, moviesPerPage, currentPage } = getters;
+      if (query.length) commit(CURRENT_PAGE, 1);
       const from = currentPage * moviesPerPage - moviesPerPage;
       const to = currentPage * moviesPerPage;
-      const paginated = favMovies.slice(from, to);
+      const filtered = favMovies.filter(({ Title }) => Title.toLowerCase()
+        .includes(query.toLowerCase()));
+      const paginated = filtered.slice(from, to);
+      commit(FAV_MOVIES_FILTERED_LENGTH, filtered.length);
+      console.log(paginated.length, paginated);
       commit(PAGINATED_MOVIES, paginated);
     },
     changePage({ commit, dispatch }, value) {

@@ -1,13 +1,10 @@
 <template>
   <div>
+    <Navigation />
     <Notification />
     <router-view />
     <div class="wrap-bottom">
       <span class="apiCreds"><a href="https://eztv.io/api/">eztv-api</a></span>
-      <b-button variant="success" class="history-btn" @click="onClick" size="sm"
-        ><b-icon :icon="historyBtn.icon"></b-icon>
-        {{ historyBtn.text }}</b-button
-      >
     </div>
   </div>
 </template>
@@ -15,45 +12,20 @@
 <script>
 import { mapActions } from 'vuex';
 import Notification from '../components/Notification.vue';
+import Navigation from '../components/Navigation.vue';
 
 export default {
   name: 'App',
-  components: { Notification },
+  components: { Notification, Navigation },
   mounted() {
     this.initLocalStorage();
     this.initLocalStorageDwnlds();
   },
   computed: {
-    historyBtn() {
-      const { name: location } = this.$route;
-      console.log(location, 'computed');
-      switch (location) {
-        case 'Main':
-          return { text: 'history', icon: 'clock-history' };
-        case 'History':
-          return { text: 'home', icon: 'arrow-left-short' };
-        default:
-          return { text: 'history', icon: 'clock-history' };
-      }
-    },
   },
   methods: {
     ...mapActions('favorites', ['initLocalStorage']),
     ...mapActions('downloadsHistory', ['initLocalStorageDwnlds']),
-    onClick() {
-      const { name: location } = this.$router.history.current;
-      console.log(location, 'onclick');
-      switch (location) {
-        case 'Main':
-          this.$router.push({ name: 'History' });
-          break;
-        case 'History':
-          this.$router.push({ name: 'Main' });
-          break;
-        default:
-          this.$router.push({ name: 'History' });
-      }
-    },
   },
 };
 </script>
