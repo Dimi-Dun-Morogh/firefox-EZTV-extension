@@ -1,13 +1,13 @@
 !<template>
   <div>
     <b-nav tabs align="center" fill class="navigation" justified>
-      <b-nav-item @click="goHome" :active="Home"
+      <b-nav-item @click="goHome" :active="activeHome"
         ><b-icon icon="house-fill" />Home</b-nav-item
       >
-      <b-nav-item @click="Favs" :active="Favorites"
+      <b-nav-item @click="Favs" :active="activeFav"
         ><b-icon icon="heart-fill" />Favorites</b-nav-item
       >
-      <b-nav-item @click="HistoryGo" :active="History"
+      <b-nav-item @click="HistoryGo" :active="activeHistory"
         ><b-icon icon="clock-fill" />History</b-nav-item
       >
     </b-nav>
@@ -20,30 +20,32 @@ import { mapActions } from 'vuex';
 export default {
   name: 'Navigation',
   data: () => ({
-    Home: true,
-    Favorites: false,
-    History: false,
   }),
+  computed: {
+    activeFav() {
+      const { name: location } = this.$route;
+      return location === 'Favs';
+    },
+    activeHome() {
+      const { name: location } = this.$route;
+      return location === 'Main';
+    },
+    activeHistory() {
+      const { name: location } = this.$route;
+      return location === 'History';
+    },
+  },
   methods: {
     ...mapActions('favorites', ['fetchFavs']),
     goHome() {
       this.$router.push({ name: 'Main' });
-      this.Favorites = false;
-      this.History = false;
-      this.Home = true;
     },
     Favs() {
       this.fetchFavs();
       this.$router.push({ name: 'Favs' });
-      this.Favorites = true;
-      this.History = false;
-      this.Home = false;
     },
     HistoryGo() {
       this.$router.push({ name: 'History' });
-      this.Favorites = false;
-      this.History = true;
-      this.Home = false;
     },
   },
 };

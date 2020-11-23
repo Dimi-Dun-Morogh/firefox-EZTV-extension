@@ -1,21 +1,18 @@
 <template>
   <div>
-      <div  class="movieItemsWrap">
-    <div v-for="(movie) in paginatedMovies"
-    :key="movie.imdbID"
-    >
-      <MovieItem :movie="movie"
-      @addfav="RemoveFav"/>
-
-  </div>
-
- </div>
+    <div >
+        <transition-group name="fadeLeft" class="movieItemsWrap">
+         <div v-for="movie in paginatedMovies" :key="movie.imdbID">
+        <MovieItem :movie="movie" @addfav="RemoveFav" />
+      </div>
+  </transition-group>
+    </div>
     <MoviesPagination
-    :current-page="currentPage"
+      :current-page="currentPage"
       :per-page="moviesPerPage"
       :total="moviesLength"
       @onPageChanged="onPageChange"
-   />
+    />
   </div>
 </template>
 
@@ -38,7 +35,7 @@ export default {
   methods: {
     ...mapActions('favorites', ['changePage', 'addMovieIdToFav', 'fetchFavs']),
     onPageChange(page) {
-      this.changePage(page);
+      this.$emit('onPageChange', page);
     },
     RemoveFav(val) {
       this.addMovieIdToFav(val);
@@ -53,7 +50,8 @@ export default {
 .movieItemsWrap {
   display: flex;
   justify-content: space-around;
-padding-left: 5px;
-padding-right: 5px;
+  flex-direction: row;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 </style>

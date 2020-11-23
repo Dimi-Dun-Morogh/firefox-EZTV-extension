@@ -1,14 +1,7 @@
 <template>
   <div>
     <div class="nav-buttons">
-      <b-button variant="success" class="fav-btn" size="sm" @click="onClickBack">
-        <b-icon icon="arrow-left-short"></b-icon>Back
-      </b-button>
       <span>found: {{totalResults}}</span>
-      <b-button variant="success" class="fav-btn" size="sm" @click="onClickFav">
-        <b-icon icon="arrow-right-short
-"></b-icon>Favorites
-      </b-button>
     </div>
     <Shows />
   </div>
@@ -27,12 +20,6 @@ export default {
     ...mapGetters('eztv', ['totalResults']),
   },
   methods: {
-    onClickBack() {
-      this.$router.push({ name: 'Main' });
-    },
-    onClickFav() {
-      this.$router.push({ name: 'Favs' });
-    },
   },
 };
 </script>
@@ -40,7 +27,7 @@ export default {
 <style scoped>
 .nav-buttons {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 5px;
 }
 .fav-btn {

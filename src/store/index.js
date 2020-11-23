@@ -5,6 +5,7 @@ import favorites from './favorites';
 import eztv from './eztv';
 import notifications from './notification';
 import downloadsHistory from './history_dwnlds';
+import preloaderStore from './preloader';
 
 Vue.use(Vuex);
 
@@ -21,5 +22,6 @@ export default new Vuex.Store({
     eztv,
     notifications,
     downloadsHistory,
+    preloaderStore,
   },
 });

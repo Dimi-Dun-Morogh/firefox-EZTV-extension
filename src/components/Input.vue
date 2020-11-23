@@ -50,8 +50,11 @@ export default {
 .form {
   margin-left: 10px;
 }
+.form-control:focus {
+  box-shadow: none;
+}
 #inline-form-input-movie {
-  width: 160px;
+  width: 155px;
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
   border-radius: 0%;
@@ -60,7 +63,9 @@ export default {
 }
 #button {
   align-self: flex-start;
-  border-top-left-radius: 0;
-border-bottom-left-radius: 0;
+  border-radius: 0%;
+}
+#button:focus {
+  box-shadow: none;
 }
 </style>

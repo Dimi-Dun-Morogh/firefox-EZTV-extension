@@ -97,9 +97,10 @@ const FavoritesStore = {
       console.log(paginated.length, paginated);
       commit(PAGINATED_MOVIES, paginated);
     },
-    changePage({ commit, dispatch }, value) {
-      commit(CURRENT_PAGE, value);
-      dispatch('paginateMovies');
+    changePage({ commit, dispatch }, { page, query }) {
+      commit(CURRENT_PAGE, page);
+      console.log('current page', page);
+      dispatch('paginateMovies', query);
     },
 
     updateLocalStorage(context, val) {

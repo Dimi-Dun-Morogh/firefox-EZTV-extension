@@ -38,6 +38,7 @@ const moviesStore = {
   actions: {
     async  searchMovies({ commit, dispatch }, query) {
       try {
+        dispatch('setLoader', true, { root: true });
         const response = await movieDbAxios.get(`/?s=${query}&type=series`);
         if (response.Error) {
           throw Error(response.Error);
@@ -57,6 +58,8 @@ const moviesStore = {
           },
           { root: true },
         );
+      } finally {
+        dispatch('setLoader', false, { root: true });
       }
     },
     paginateMovies({ commit, getters }) {

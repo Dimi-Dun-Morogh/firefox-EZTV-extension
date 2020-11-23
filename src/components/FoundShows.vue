@@ -127,7 +127,7 @@ export default {
 }
 .date-realeased {
   color: #05f914;
-  font-size: 12px;
+  font-size: 14px;
   margin-left: 10px;
 }
 .tooltip-bg >>> .tooltip-inner {

@@ -8,11 +8,11 @@ FireFox: https://addons.mozilla.org/ru/firefox/addon/eztv-fast-and-easy/
 ##### first launch:
 ![Alt text](images/ScreenInit.JPG?raw=true "scheme")
 ##### Search:
-![Alt text](images/screen-search.png?raw=true "scheme")
+![Alt text](images/screen-search.JPG?raw=true "scheme")
 ##### Favs:
-![Alt text](images/screen-favs.png?raw=true "scheme")
+![Alt text](images/screen-favs.JPG?raw=true "scheme")
 ##### Eztv:
-![Alt text](images/Screen-eztv.png?raw=true "scheme")
+![Alt text](images/Screen-eztv.jpg?raw=true "scheme")
 ##### on error:
 ![Alt text](images/Screen-search-wrongjpg.jpg?raw=true "scheme")
 ##### history:
@@ -34,5 +34,6 @@ npm run build - build
 - [x] fixed local storage & downloads  history issue + added google analytics (14.11.2020)✅
 <br>:cow2::cow2::cow2:+ **release v.0.1.7**:cow2::cow2::cow2:
 - [x] should be able to perform torrents search from history downlds table (18.11.2020)✅
-- [ ] implement filter by name for favorites and eztv items;
-- [x] think of way to group nav buttons ( maybe something from bootstrap)
+- [х] implement filter by name for favorites and eztv items; (23.11.2020)✅
+- [x] think of way to group nav buttons ( maybe something from bootstrap) (21.11.2020)✅
+<br>:cow2::cow2::cow2:+ **release v.0.2.2**:cow2::cow2::cow2:

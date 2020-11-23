@@ -1,11 +1,14 @@
 <template>
  <div>
-   <div  class="movieItemsWrap">
-    <div v-for="(movie,index) in paginatedMovies"
-    :key="index"  >
+   <div >
+      <transition-group name="slideLeft" class="movieItemsWrap">
+    <div v-for="movie in paginatedMovies"
+    :key="movie.imdbID"  >
       <MovieItem :movie="movie"
-      @addfav="addFav"/>
+      @addfav="addFav"
+      class="movie"/>
   </div>
+  </transition-group>
  </div>
    <!-- <button @click="onClick">click</button> -->
 <div  v-show="moviesLength">
@@ -30,6 +33,8 @@ export default {
     MovieItem,
     MoviesPagination,
   },
+  data: () => ({
+  }),
   computed: {
     ...mapGetters('movies', ['movies', 'paginatedMovies', 'currentPage', 'moviesPerPage', 'moviesLength']),
   },
