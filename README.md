@@ -12,7 +12,7 @@ FireFox: https://addons.mozilla.org/ru/firefox/addon/eztv-fast-and-easy/
 ##### Favs:
 ![Alt text](images/screen-favs.JPG?raw=true "scheme")
 ##### Eztv:
-![Alt text](images/Screen-eztv.jpg?raw=true "scheme")
+![Alt text](images/screen-eztv.jpg?raw=true "scheme")
 ##### on error:
 ![Alt text](images/Screen-search-wrongjpg.jpg?raw=true "scheme")
 ##### history:
