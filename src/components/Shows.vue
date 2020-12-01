@@ -2,12 +2,15 @@
   <div>
     <Input  :showButton="false" class="d-flex justify-content-center"
     @inputEventType="filterTorrents"/>
-    <transition-group v-if="paginatedShows.length" name="fadeUp" tag="div" class="wrap-eztv">
-<div v-for="(show) in paginatedShows" :key="show.id">
+    <div class="wrap-eztv" v-if="paginatedShows.length">
+    <transition-group  name="fadeUp" tag="div" style="overflow-y: auto">
+    <FoundShows v-for="(show) in paginatedShows" :key="show.id" :show="show"/>
+<!-- <div v-for="(show) in paginatedShows" :key="show.id">
       <FoundShows :show="show"
     />
-</div>
+</div> -->
     </transition-group>
+    </div>
     <span v-else class="text-center">nothing has been found by current query</span>
 <MoviesPagination
  :current-page="currentPage"
@@ -56,7 +59,7 @@ export default {
 <style scoped>
 .wrap-eztv {
   height: 255px;
-  overflow: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
