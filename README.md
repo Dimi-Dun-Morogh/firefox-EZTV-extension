@@ -17,8 +17,7 @@ FireFox: https://addons.mozilla.org/ru/firefox/addon/eztv-fast-and-easy/
 ![Alt text](images/Screen-search-wrongjpg.jpg?raw=true "scheme")
 ##### history:
 ![Alt text](images/history.JPG?raw=true "scheme")
-##### Scheme:
-![Alt text](images/scheme.png?raw=true "scheme")
+
 ```sh
 npm run serve - dev auto refresh
 npm run build - build
