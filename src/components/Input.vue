@@ -38,10 +38,10 @@ export default {
   methods: {
     onClick(event) {
       event.preventDefault();
-      this.$emit('inputEvent', this.searchValue);
+      this.$emit('inputEvent', this.searchValue.trim());
     },
     onInput() {
-      this.$emit('inputEventType', this.searchValue);
+      this.$emit('inputEventType', this.searchValue.trim());
     },
   },
 };
