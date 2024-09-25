@@ -1,27 +1,20 @@
 {
-  "manifest_version": 2,
-  "content_security_policy": "script-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://google-analytics.com; object-src 'self'",
+  "manifest_version": 3,
   "name": "__MSG_extName__",
   "description": "__MSG_appDesc__",
   "default_locale": "en",
+  "version": "1.1.1",
   "permissions": [
     "downloads"
   ],
-  "version": "1.1.1",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "EZTV ext",
+    "declare_popup": "popup.html"
+  },
   "icons": {
     "19": "icons/icon-19.png",
     "48": "icons/icon-48.png",
     "128": "icons/icon-128.png"
-  },
-  "browser_action": {
-    "browser_style": true,
-    "default_popup": "popup.html",
-    "default_title": "EZTV ext",
-    "default_icon": {
-      "19": "icons/icon-19.png",
-      "38": "icons/icon-38.png",
-      "48": "icons/icon-48.png"
-    }
   }
-
 }
